@@ -42,7 +42,7 @@ The application allows users solve a soduku board.
 ## How to use?
 In order to host the project locally, follow these steps
 
-    git clone https://github.com/JuanLee10/j2f-fe.git
+    git clone https://github.com/JuanLee10/sudoku-react.git
     cd j2f-fe
     npm install
     npm start
