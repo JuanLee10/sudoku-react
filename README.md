@@ -7,8 +7,6 @@ This is the React front-end for Sudoku.
 
 Wanting to learn more about React and create a fun enjoyable game.
 
-[(Backend Application)](https://github.com/JuanLee10/j2f-be). 
-
 <!-- ## Build status
 Build status of continus integration i.e. travis, appveyor etc. Ex. - 
 
