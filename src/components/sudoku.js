@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 export default function Sudoku() {
   const [board, setBoard] = useState([
-    [5, 3, null, null, 7, null, null, null, null],
-    [6, null, null, 1, 9, 5, null, null, null],
-    [null, 9, 8, null, null, null, null, 6, null],
-    [8, null, null, null, 6, null, null, null, 3],
-    [4, null, null, 8, null, 3, null, null, 1],
-    [7, null, null, null, 2, null, null, null, 6],
-    [null, 6, null, null, null, null, 2, 8, null],
-    [null, null, null, 4, 1, 9, null, null, 5],
-    [null, null, null, null, 8, null, null, 7, 9],
+    [0, 0, 0, 2, 6, 0, 7, 0, 1],
+    [6, 8, 0, 0, 7, 0, 0, 9, 0],
+    [1, 9, 0, 0, 0, 4, 5, 0, 0],
+    [8, 2, 0, 1, 0, 0, 0, 4, 0],
+    [0, 0, 4, 6, 0, 2, 9, 0, 0],
+    [0, 5, 0, 0, 0, 3, 0, 2, 8],
+    [0, 0, 9, 3, 0, 0, 0, 7, 4],
+    [0, 4, 0, 0, 5, 0, 0, 3, 6],
+    [7, 0, 3, 0, 1, 8, 0, 0, 0],
   ]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,37 +20,40 @@ export default function Sudoku() {
     setBoard(newBoard);
   }
 
+  const checkZero = (num) => {
+    return num > 0;
+  };
+
   function handleCheckAnswers() {
-    // Check rows
+    // Checking rows
     for (let i = 0; i < 9; i++) {
       const row = board[i];
-      const uniqueRow = new Set(row);
-      console.log(uniqueRow);
-      if (row.includes(null)) {
-        setErrorMessage("Error: finish the row " + (i + 1));
-        return;
-      }
-      else if (uniqueRow.size !== 9) {
+      const toFindDuplicates = (row) =>
+        row.filter((item, index) => row.indexOf(item) !== index);
+      let checkRow = toFindDuplicates(row).filter(checkZero);
+      if (checkRow.length > 0) {
         setErrorMessage("Error: Duplicate numbers in row " + (i + 1));
         return;
+      } else {
+        setErrorMessage("");
       }
     }
 
-    // Check columns
+    // Checking columns
     for (let i = 0; i < 9; i++) {
       const column = board.map((row) => row[i]);
-      const uniqueColumn = new Set(column);
-      if (column.includes(null)) {
-        setErrorMessage("Error: finish the column " + (i + 1));
-        return;
-      }
-      else if (uniqueColumn.size !== 9) {
+      const toFindDuplicates = (column) =>
+        column.filter((item, index) => column.indexOf(item) !== index);
+      let checkColumn = toFindDuplicates(column).filter(checkZero);
+      if (checkColumn.length > 0) {
         setErrorMessage("Error: Duplicate numbers in column " + (i + 1));
         return;
+      } else {
+        setErrorMessage("");
       }
     }
 
-    // Check 3x3 subgrids
+    // Checking 3x3 subgrids
     for (let i = 0; i < 9; i++) {
       const subgrid = [];
       const rowStart = Math.floor(i / 3) * 3;
@@ -60,18 +63,28 @@ export default function Sudoku() {
         const col = colStart + (j % 3);
         subgrid.push(board[row][col]);
       }
-      const uniqueSubgrid = new Set(subgrid);
-      if (subgrid.includes(null)) {
-        setErrorMessage("Error: finish the subgrid " + (i + 1));
-        return;
-      }
-      else if (uniqueSubgrid.size !== 9) {
+
+      const toFindDuplicates = (subgrid) =>
+        subgrid.filter((item, index) => subgrid.indexOf(item) !== index);
+      let checkSubgrid = toFindDuplicates(subgrid).filter(checkZero);
+      if (checkSubgrid.length > 0) {
         setErrorMessage("Error: Duplicate numbers in subgrid " + (i + 1));
         return;
+      } else {
+        setErrorMessage("");
       }
+    }
+
+    // Checking if board is completed
+    const flatBoard = board.flat();
+    if (!flatBoard.includes(0)) {
+      setErrorMessage("Completed!");
+    } else {
+      setErrorMessage("");
     }
   }
 
+  // Rendering the sudoku board
   return (
     <div id="Sudoku">
       <table>
