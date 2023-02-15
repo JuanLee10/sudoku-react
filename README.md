@@ -32,12 +32,12 @@ The application allows users to solve a soduku board.
 
 1. The player can play a game from start to finish.
 2. The player can validate whether or not there are errors on the board by clicking a button with the text "Check answers".
-3. An error message should be displayed if any of the three following conditions are met:
+3. An error message is displayed if any of the three following conditions are met:
     a column contains duplicate numbers
     a row contains duplicate numbers
     one of the nine 3x3 subgrids that compose the grid contains duplicate numbers
-4. If there are no errors on the board and the board is unfinished, no message should be displayed and any existing error message should be cleared when the user checks their answers.
-5. If there are no errors on the board and the board is finished, the player should be shown a message with the text "Completed!" when the the user checks their answers.
+4. If there are no errors on the board and the board is unfinished, no message is displayed and any existing error message is cleared when the user checks their answers.
+5. If there are no errors on the board and the board is finished, the player will be shown a message with the text "Completed!" when the the user checks their answers.
 
 ## How to use?
 In order to host the project locally, follow these steps
