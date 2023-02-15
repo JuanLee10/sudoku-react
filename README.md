@@ -43,7 +43,7 @@ The application allows users solve a soduku board.
 In order to host the project locally, follow these steps
 
     git clone https://github.com/JuanLee10/sudoku-react.git
-    cd j2f-fe
+    cd sudoku-react 
     npm install
     npm start
 
