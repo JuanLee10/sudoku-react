@@ -28,7 +28,7 @@ Include logo/demo screenshot etc. -->
 - [React](https://reactjs.org/)
 
 ## Features
-The application allows users solve a soduku board.
+The application allows users to solve a soduku board.
 
 1. The player can play a game from start to finish.
 2. The player can validate whether or not there are errors on the board by clicking a button with the text "Check answers".
