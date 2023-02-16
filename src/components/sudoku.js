@@ -34,8 +34,6 @@ export default function Sudoku() {
       if (checkRow.length > 0) {
         setErrorMessage("Error: Duplicate numbers in row " + (i + 1));
         return;
-      } else {
-        setErrorMessage("");
       }
     }
 
@@ -48,8 +46,6 @@ export default function Sudoku() {
       if (checkColumn.length > 0) {
         setErrorMessage("Error: Duplicate numbers in column " + (i + 1));
         return;
-      } else {
-        setErrorMessage("");
       }
     }
 
@@ -70,8 +66,6 @@ export default function Sudoku() {
       if (checkSubgrid.length > 0) {
         setErrorMessage("Error: Duplicate numbers in subgrid " + (i + 1));
         return;
-      } else {
-        setErrorMessage("");
       }
     }
 
